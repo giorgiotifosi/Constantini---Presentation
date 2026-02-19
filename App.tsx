@@ -160,8 +160,15 @@ const App: React.FC = () => {
                 {slide.subtitle}
               </div>
               
-              <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-5 leading-tight">
-                {slide.title}
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-10 leading-tight">
+                {currentSlide === 0 ? (
+                  <>
+                    <span className="block md:inline">კონსტანტინი</span>
+                    <span className="block md:inline"> — 15+ წელი ბაზარზე</span>
+                  </>
+                ) : (
+                  slide.title
+                )}
               </h2>
               
               <p className="text-[13px] md:text-base lg:text-lg text-white/80 leading-relaxed font-light mb-4 md:mb-6 max-w-xl border-l-2 md:border-l-4 border-[#354f60] pl-4 text-left">
