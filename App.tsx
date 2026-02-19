@@ -119,7 +119,7 @@ const App: React.FC = () => {
       ))}
 
       {/* Fixed Header */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-8 bg-[#354f60] shadow-xl h-16 md:h-20 flex items-center border-b border-white/10">
+      <header className="absolute top-0 left-0 right-0 z-50 px-4 md:px-8 bg-[#354f60] shadow-xl h-14 md:h-20 flex items-center border-b border-white/10">
         <div className="max-w-7xl w-full mx-auto flex justify-between items-center">
           <button 
             onClick={() => goToSlide(0)}
@@ -128,25 +128,25 @@ const App: React.FC = () => {
             <img 
               src={getDriveUrl(LOGO_ID)} 
               alt="Constantini Logo" 
-              className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+              className="h-7 md:h-10 lg:h-12 w-auto object-contain"
             />
           </button>
           <a 
             href="https://constantini.ge" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-white/90 hover:text-white transition-all text-xs md:text-base font-medium flex items-center gap-2"
+            className="text-white/90 hover:text-white transition-all text-[10px] md:text-base font-medium flex items-center gap-2"
           >
-            <Globe size={16} className="text-white/70 hidden sm:block" />
+            <Globe size={14} className="text-white/70 hidden sm:block" />
             <span className="tracking-wider">constantini.ge</span>
           </a>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-20 h-full w-full flex flex-col items-center justify-center pt-20 pb-48 md:pt-24 md:pb-56 px-6 md:px-12 overflow-y-auto scrollbar-hide">
-        <div className="max-w-7xl w-full mx-auto">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-6 lg:gap-10 items-center`}>
+      <main className="relative z-20 h-full w-full flex flex-col pt-14 pb-44 md:pt-24 md:pb-56 overflow-y-auto scrollbar-hide">
+        <div className="max-w-7xl w-full mx-auto px-5 md:px-12 my-auto">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-5 lg:gap-10 items-center`}>
             
             {/* Content Column */}
             <div 
@@ -156,46 +156,46 @@ const App: React.FC = () => {
                 isTransitioning ? 'opacity-0 -translate-x-8' : 'opacity-100 translate-x-0'
               }`}
             >
-              <div className="inline-block px-3 py-1 mb-3 md:mb-5 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[10px] md:text-xs font-medium tracking-widest uppercase">
+              <div className="inline-block px-2.5 py-0.5 mb-2 md:mb-5 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[9px] md:text-xs font-medium tracking-widest uppercase">
                 {slide.subtitle}
               </div>
               
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-5 leading-tight">
+              <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-5 leading-tight">
                 {slide.title}
               </h2>
               
-              <p className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed font-light mb-4 md:mb-6 max-w-xl border-l-4 border-[#354f60] pl-5 text-left">
+              <p className="text-[13px] md:text-base lg:text-lg text-white/80 leading-relaxed font-light mb-4 md:mb-6 max-w-xl border-l-2 md:border-l-4 border-[#354f60] pl-4 text-left">
                 {slide.description}
               </p>
 
-              <div className={`grid grid-cols-2 gap-3 md:gap-5 max-w-lg ${currentSlide === 0 ? 'justify-items-center lg:justify-items-start' : ''}`}>
+              <div className={`grid grid-cols-2 gap-2.5 md:gap-5 max-w-lg ${currentSlide === 0 ? 'justify-items-center lg:justify-items-start' : ''}`}>
                  <div className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
-                    <Award size={16} className="text-[#354f60]" />
+                    <Award size={14} className="text-[#354f60] md:w-[18px] md:h-[18px]" />
                     <span className="text-[10px] md:text-sm font-medium">15+ წელი</span>
                  </div>
                  <div className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
-                    <LayoutGrid size={16} className="text-[#354f60]" />
+                    <LayoutGrid size={14} className="text-[#354f60] md:w-[18px] md:h-[18px]" />
                     <span className="text-[10px] md:text-sm font-medium">საწარმო</span>
                  </div>
                  <div className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
-                    <PenTool size={16} className="text-[#354f60]" />
+                    <PenTool size={14} className="text-[#354f60] md:w-[18px] md:h-[18px]" />
                     <span className="text-[10px] md:text-sm font-medium">ინდივიდუალური</span>
                  </div>
                  <div className="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
-                    <MessageSquare size={16} className="text-[#354f60]" />
+                    <MessageSquare size={14} className="text-[#354f60] md:w-[18px] md:h-[18px]" />
                     <span className="text-[10px] md:text-sm font-medium">კონსულტაცია</span>
                  </div>
               </div>
             </div>
 
-            {/* Gallery Column (Slide 2) - Optimized to show all photos */}
+            {/* Gallery Column (Slide 2) */}
             {currentSlide !== 0 && (
               <div 
-                className={`lg:col-span-7 flex flex-col gap-3 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-2 md:gap-3 transition-all duration-1000 delay-200 transform ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
                 }`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 max-h-[45vh] lg:max-h-[58vh] overflow-y-auto pr-1 scrollbar-hide">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:max-h-[50vh] overflow-visible">
                   {slide.imageUrls.map((img, idx) => (
                     <button
                       key={idx}
@@ -214,12 +214,12 @@ const App: React.FC = () => {
                         alt={`Project view ${idx + 1}`} 
                       />
                       <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <Sparkles className="text-white opacity-0 hover:opacity-100 scale-90" size={18} />
+                        <Sparkles className="text-white opacity-0 hover:opacity-100 scale-75" size={16} />
                       </div>
                     </button>
                   ))}
                 </div>
-                <p className="text-white/40 text-[9px] md:text-[11px] italic text-center lg:text-left tracking-wider">
+                <p className="text-white/40 text-[9px] md:text-[11px] italic text-center lg:text-left tracking-wider mb-2">
                   დააკლიკეთ ფოტოს გასადიდებლად
                 </p>
               </div>
@@ -243,23 +243,23 @@ const App: React.FC = () => {
           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 animate-in fade-in zoom-in duration-300"
           onClick={() => setEnlargedImageIndex(null)}
         >
-          <button className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110]" onClick={() => setEnlargedImageIndex(null)}>
-            <X size={32} />
+          <button className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-[110]" onClick={() => setEnlargedImageIndex(null)}>
+            <X size={28} />
           </button>
           
-          <button className="absolute left-4 text-white/40 hover:text-white transition-colors z-[110]" onClick={prevEnlarged}>
-            <ChevronLeft size={48} />
+          <button className="absolute left-2 text-white/40 hover:text-white transition-colors z-[110]" onClick={prevEnlarged}>
+            <ChevronLeft size={40} />
           </button>
           
           <img 
             src={slide.imageUrls[enlargedImageIndex]} 
-            className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
+            className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-lg"
             alt="Enlarged"
             onClick={(e) => e.stopPropagation()}
           />
 
-          <button className="absolute right-4 text-white/40 hover:text-white transition-colors z-[110]" onClick={nextEnlarged}>
-            <ChevronRight size={48} />
+          <button className="absolute right-2 text-white/40 hover:text-white transition-colors z-[110]" onClick={nextEnlarged}>
+            <ChevronRight size={40} />
           </button>
         </div>
       )}
