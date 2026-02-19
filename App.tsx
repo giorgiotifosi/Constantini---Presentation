@@ -109,7 +109,7 @@ const App: React.FC = () => {
           }`}
         >
           {/* Darker Overlays for improved readability */}
-          <div className={`absolute inset-0 z-10 ${index === 0 ? 'bg-black/75' : 'bg-black/80'}`} />
+          <div className={`absolute inset-0 z-10 ${index === 0 ? 'bg-black/75' : 'bg-black/85'}`} />
           
           <img
             src={index === 0 ? s.imageUrls[0] : (s.imageUrls[activeSubImage] || s.imageUrls[0])}
@@ -149,12 +149,14 @@ const App: React.FC = () => {
 
       {/* Main Content Area */}
       <div className="relative z-20 h-full flex flex-col items-center justify-start pt-28 md:pt-36 lg:pt-0 lg:justify-center pb-48 px-6 md:px-12 overflow-y-auto scrollbar-hide">
-        <div className="max-w-6xl w-full mx-auto">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl' : 'lg:grid-cols-2'} gap-6 lg:gap-12 items-center mx-auto`}>
+        <div className="max-w-7xl w-full mx-auto">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl' : 'lg:grid-cols-12'} gap-6 lg:gap-12 items-center mx-auto`}>
             
             {/* Content Column */}
             <div 
               className={`transition-all duration-700 ease-out transform ${
+                currentSlide === 0 ? '' : 'lg:col-span-5'
+              } ${
                 isTransitioning ? 'opacity-0 -translate-x-8' : 'opacity-100 translate-x-0'
               }`}
             >
@@ -190,14 +192,14 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Side Content - Adaptive Gallery (Only shown for Project Slide) */}
+            {/* Right Side Content - More compact gallery to show all items */}
             {currentSlide !== 0 && (
               <div 
-                className={`flex flex-col gap-4 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-4 transition-all duration-1000 delay-200 transform ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
                 }`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2 md:gap-4 max-h-[35vh] lg:max-h-[50vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/20">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3 max-h-[40vh] lg:max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/20">
                   {slide.imageUrls.map((img, idx) => (
                     <button
                       key={idx}
@@ -205,8 +207,8 @@ const App: React.FC = () => {
                         setActiveSubImage(idx);
                         setEnlargedImageIndex(idx);
                       }}
-                      className={`relative aspect-video rounded-lg md:rounded-xl overflow-hidden border-2 transition-all duration-300 transform hover:scale-105 shadow-2xl ${
-                        activeSubImage === idx ? 'border-white ring-2 md:ring-4 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
+                      className={`relative aspect-video lg:aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all duration-300 transform hover:scale-105 shadow-2xl ${
+                        activeSubImage === idx ? 'border-white ring-2 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
                       }`}
                     >
                       <img 
@@ -216,11 +218,14 @@ const App: React.FC = () => {
                         alt={`Project view ${idx + 1}`} 
                       />
                       <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <Sparkles className="text-white opacity-0 hover:opacity-100 drop-shadow-lg scale-75 md:scale-100 transition-opacity" size={24} />
+                        <Sparkles className="text-white opacity-0 hover:opacity-100 drop-shadow-lg scale-75 md:scale-100 transition-opacity" size={20} />
                       </div>
                     </button>
                   ))}
                 </div>
+                <p className="text-white/40 text-[9px] md:text-[11px] italic text-center lg:text-left">
+                  დააკლიკეთ ფოტოს გასადიდებლად
+                </p>
               </div>
             )}
           </div>
