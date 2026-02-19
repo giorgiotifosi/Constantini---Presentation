@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -18,7 +17,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   onGoTo,
 }) => {
   return (
-    <div className="fixed bottom-32 md:bottom-44 left-0 right-0 z-40 flex flex-col items-center gap-3 md:gap-4 pointer-events-none">
+    <div className="fixed bottom-24 md:bottom-32 left-0 right-0 z-40 flex flex-col items-center gap-3 md:gap-4 pointer-events-none">
       <div className="flex gap-4 pointer-events-auto">
         <button
           onClick={onPrev}
