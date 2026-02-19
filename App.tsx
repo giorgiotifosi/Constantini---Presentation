@@ -108,7 +108,6 @@ const App: React.FC = () => {
           }`}
         >
           <div className={`absolute inset-0 z-10 ${index === 0 ? 'bg-black/75' : 'bg-black/85'}`} />
-          
           <img
             src={index === 0 ? s.imageUrls[0] : (s.imageUrls[activeSubImage] || s.imageUrls[0])}
             alt={s.title}
@@ -119,9 +118,9 @@ const App: React.FC = () => {
         </div>
       ))}
 
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-8 bg-[#354f60] shadow-xl py-3 md:py-4 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      {/* Fixed Header */}
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-8 bg-[#354f60] shadow-xl h-16 md:h-20 flex items-center border-b border-white/10">
+        <div className="max-w-7xl w-full mx-auto flex justify-between items-center">
           <button 
             onClick={() => goToSlide(0)}
             className="focus:outline-none transition-transform active:scale-95 duration-200"
@@ -129,25 +128,25 @@ const App: React.FC = () => {
             <img 
               src={getDriveUrl(LOGO_ID)} 
               alt="Constantini Logo" 
-              className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform hover:scale-105"
+              className="h-8 md:h-10 lg:h-12 w-auto object-contain"
             />
           </button>
           <a 
             href="https://constantini.ge" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-white/90 hover:text-white transition-all text-sm md:text-base font-medium flex items-center gap-2 group"
+            className="text-white/90 hover:text-white transition-all text-xs md:text-base font-medium flex items-center gap-2"
           >
-            <Globe size={18} className="text-white/70 group-hover:text-white hidden sm:block" />
+            <Globe size={16} className="text-white/70 hidden sm:block" />
             <span className="tracking-wider">constantini.ge</span>
           </a>
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-center pb-24 px-6 md:px-12 overflow-y-auto scrollbar-hide">
-        <div className="max-w-7xl w-full mx-auto mt-12 md:mt-0">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-4xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-16 items-center`}>
+      {/* Main Content Area - Padding top matches header height + safe buffer */}
+      <main className="relative z-20 h-full w-full flex flex-col items-center justify-center pt-24 pb-48 md:pt-28 md:pb-60 px-6 md:px-12 overflow-y-auto scrollbar-hide">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-12 items-center`}>
             
             {/* Content Column */}
             <div 
@@ -157,34 +156,34 @@ const App: React.FC = () => {
                 isTransitioning ? 'opacity-0 -translate-x-8' : 'opacity-100 translate-x-0'
               }`}
             >
-              <div className="inline-block px-4 py-1.5 mb-4 md:mb-8 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[11px] md:text-sm font-medium tracking-widest uppercase">
+              <div className="inline-block px-3 py-1 mb-4 md:mb-6 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[10px] md:text-xs font-medium tracking-widest uppercase">
                 {slide.subtitle}
               </div>
               
-              <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-10 leading-[1.15]">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
                 {slide.title}
               </h2>
               
-              <p className="text-base md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light mb-6 md:mb-12 max-w-2xl border-l-4 border-[#354f60] pl-6">
+              <p className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed font-light mb-6 md:mb-8 max-w-xl border-l-4 border-[#354f60] pl-5 text-left">
                 {slide.description}
               </p>
 
-              <div className={`grid grid-cols-2 gap-4 md:gap-8 max-w-lg ${currentSlide === 0 ? 'justify-items-center lg:justify-items-start' : ''}`}>
-                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                    <Award size={20} className="text-[#354f60]" />
-                    <span className="text-xs md:text-base font-medium">15+ წელი</span>
+              <div className={`grid grid-cols-2 gap-4 md:gap-6 max-w-lg ${currentSlide === 0 ? 'justify-items-center lg:justify-items-start' : ''}`}>
+                 <div className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                    <Award size={18} className="text-[#354f60]" />
+                    <span className="text-[11px] md:text-sm font-medium">15+ წელი</span>
                  </div>
-                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                    <LayoutGrid size={20} className="text-[#354f60]" />
-                    <span className="text-xs md:text-base font-medium">საწარმო</span>
+                 <div className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                    <LayoutGrid size={18} className="text-[#354f60]" />
+                    <span className="text-[11px] md:text-sm font-medium">საწარმო</span>
                  </div>
-                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                    <PenTool size={20} className="text-[#354f60]" />
-                    <span className="text-xs md:text-base font-medium">ინდივიდუალური</span>
+                 <div className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                    <PenTool size={18} className="text-[#354f60]" />
+                    <span className="text-[11px] md:text-sm font-medium">ინდივიდუალური</span>
                  </div>
-                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                    <MessageSquare size={20} className="text-[#354f60]" />
-                    <span className="text-xs md:text-base font-medium">კონსულტაცია</span>
+                 <div className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                    <MessageSquare size={18} className="text-[#354f60]" />
+                    <span className="text-[11px] md:text-sm font-medium">კონსულტაცია</span>
                  </div>
               </div>
             </div>
@@ -192,11 +191,11 @@ const App: React.FC = () => {
             {/* Gallery Column (Slide 2) */}
             {currentSlide !== 0 && (
               <div 
-                className={`lg:col-span-7 flex flex-col gap-6 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-4 transition-all duration-1000 delay-200 transform ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
                 }`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 max-h-[45vh] lg:max-h-[65vh] overflow-y-auto pr-3 scrollbar-hide">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 max-h-[40vh] lg:max-h-[55vh] overflow-y-auto pr-2 scrollbar-hide">
                   {slide.imageUrls.map((img, idx) => (
                     <button
                       key={idx}
@@ -204,8 +203,8 @@ const App: React.FC = () => {
                         setActiveSubImage(idx);
                         setEnlargedImageIndex(idx);
                       }}
-                      className={`relative aspect-[4/3] rounded-2xl overflow-hidden border-2 transition-all duration-300 transform hover:scale-[1.03] shadow-2xl ${
-                        activeSubImage === idx ? 'border-white ring-4 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
+                      className={`relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all duration-300 transform hover:scale-[1.03] shadow-xl ${
+                        activeSubImage === idx ? 'border-white ring-2 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
                       }`}
                     >
                       <img 
@@ -215,19 +214,28 @@ const App: React.FC = () => {
                         alt={`Project view ${idx + 1}`} 
                       />
                       <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <Sparkles className="text-white opacity-0 hover:opacity-100 scale-110" size={24} />
+                        <Sparkles className="text-white opacity-0 hover:opacity-100 scale-90" size={20} />
                       </div>
                     </button>
                   ))}
                 </div>
-                <p className="text-white/50 text-xs md:text-sm italic text-center lg:text-left tracking-wide">
+                <p className="text-white/40 text-[10px] md:text-xs italic text-center lg:text-left tracking-wide">
                   დააკლიკეთ ფოტოს გასადიდებლად
                 </p>
               </div>
             )}
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Navigation Controls */}
+      <Navigation
+        currentSlide={currentSlide}
+        totalSlides={SLIDES.length}
+        onPrev={prevSlide}
+        onNext={nextSlide}
+        onGoTo={goToSlide}
+      />
 
       {/* Lightbox */}
       {enlargedImageIndex !== null && (
@@ -235,12 +243,12 @@ const App: React.FC = () => {
           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 animate-in fade-in zoom-in duration-300"
           onClick={() => setEnlargedImageIndex(null)}
         >
-          <button className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors z-[110]" onClick={() => setEnlargedImageIndex(null)}>
-            <X size={40} />
+          <button className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110]" onClick={() => setEnlargedImageIndex(null)}>
+            <X size={32} />
           </button>
           
-          <button className="absolute left-6 text-white/40 hover:text-white transition-colors z-[110]" onClick={prevEnlarged}>
-            <ChevronLeft size={64} />
+          <button className="absolute left-4 text-white/40 hover:text-white transition-colors z-[110]" onClick={prevEnlarged}>
+            <ChevronLeft size={48} />
           </button>
           
           <img 
@@ -250,24 +258,16 @@ const App: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           />
 
-          <button className="absolute right-6 text-white/40 hover:text-white transition-colors z-[110]" onClick={nextEnlarged}>
-            <ChevronRight size={64} />
+          <button className="absolute right-4 text-white/40 hover:text-white transition-colors z-[110]" onClick={nextEnlarged}>
+            <ChevronRight size={48} />
           </button>
         </div>
       )}
 
-      <Navigation
-        currentSlide={currentSlide}
-        totalSlides={SLIDES.length}
-        onPrev={prevSlide}
-        onNext={nextSlide}
-        onGoTo={goToSlide}
-      />
-      
       <Footer />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+      {/* Overall Aesthetic Overlay */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/50 via-transparent to-black/70 z-10" />
     </div>
   );
 };
