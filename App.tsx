@@ -7,7 +7,7 @@ import { LayoutGrid, PenTool, Award, MessageSquare, Sparkles, X, ChevronLeft, Ch
 const getDriveUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
 
 const LOGO_ID = '1W1QNSvsbxYUCXYpoM8BWp8cJABRSjUZC';
-const SLIDE1_BG_ID = '1p6CX1p5eRMorKERvOn9rwlRawna8Zmjm';
+const SLIDE1_BG_ID = '1xiCM0bUMsuvNCl0Mmi4Fbv4x2Z0kG21G';
 
 const SLIDES: SlideData[] = [
   {
@@ -23,13 +23,13 @@ const SLIDES: SlideData[] = [
     subtitle: "ინდივიდუალური გადაწყვეტილებები",
     description: "ჩვენი გუნდი ქმნის უნიკალურ გადაწყვეტილებებს: თანამედროვე სამზარეულოები, სიმყუდროვეზე ორიენტირებული საძინებლები და რბილი ავეჯი. პროფესიონალური დაგეგმარება და შესრულება ნებისმიერი სირთულის პროექტში. მომხმარებლის აზრი არის განვითარების მთავარი საფეხური.",
     imageUrls: [
-      getDriveUrl('1q57_dQk2oToB6aBisXrk6pEeelYu6sUp'),
-      getDriveUrl('1wuavRB88e1I5bfds_hPQTkEGkByVo179'),
-      getDriveUrl('1sCNa4tpP73O15S0C7NPHdRrpqnKYf_4n'),
-      getDriveUrl('1nu2-jGRfGKhcvWLnj_n-SMf1pkoFRmNn'),
-      getDriveUrl('1CZ31gwAJYPDVZihrjrvErS5UTUtd5ocT'),
-      getDriveUrl('1KE0gVWfNeMnGtwPygDhl_18bVunUvNr9'),
-      getDriveUrl('1ZFLq4IEuCArtvJwsw4aWv0nriOkeRTah')
+      getDriveUrl('1EyMC-_EwlKNT30S8J6XjkSgFq-Fmv3aC'),
+      getDriveUrl('1KCKeZOnq2wPCPQ-X5HogztFH6ivgz696'),
+      getDriveUrl('1I_2X8uZnj9RXk-uCfbWVTC-MavhB-Bbz'),
+      getDriveUrl('1AcqjE4wnQP7f1HKKzNjbRSQAPLMIit18'),
+      getDriveUrl('17qiGsScK9wHVDF6aVInqPC6bWTF090dY'),
+      getDriveUrl('1dhZsZFh_ZMBpf2HQUZVRFUUHzi2kS7Yu'),
+      getDriveUrl('1pQS8vRl9OapdyvavxfiMWxdBmbMqrXWB')
     ]
   }
 ];
