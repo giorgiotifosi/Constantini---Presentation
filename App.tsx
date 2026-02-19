@@ -124,11 +124,17 @@ const App: React.FC = () => {
       {/* Header with Brand Background Color */}
       <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-8 bg-[#354f60] shadow-xl py-3 md:py-4 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <img 
-            src={getDriveUrl(LOGO_ID)} 
-            alt="Constantini Logo" 
-            className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform hover:scale-105 duration-300 drop-shadow-xl"
-          />
+          <button 
+            onClick={() => goToSlide(0)}
+            className="focus:outline-none transition-transform active:scale-95 duration-200"
+            aria-label="Go to home slide"
+          >
+            <img 
+              src={getDriveUrl(LOGO_ID)} 
+              alt="Constantini Logo" 
+              className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform hover:scale-105 duration-300 drop-shadow-xl"
+            />
+          </button>
           <a 
             href="https://constantini.ge" 
             target="_blank" 
