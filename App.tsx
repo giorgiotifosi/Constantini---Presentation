@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Footer } from './components/Footer';
 import { Navigation } from './components/Navigation';
@@ -108,7 +107,6 @@ const App: React.FC = () => {
             index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 z-[-1]'
           }`}
         >
-          {/* Darker Overlays for improved readability */}
           <div className={`absolute inset-0 z-10 ${index === 0 ? 'bg-black/75' : 'bg-black/85'}`} />
           
           <img
@@ -121,18 +119,17 @@ const App: React.FC = () => {
         </div>
       ))}
 
-      {/* Header with Brand Background Color */}
+      {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-8 bg-[#354f60] shadow-xl py-3 md:py-4 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <button 
             onClick={() => goToSlide(0)}
             className="focus:outline-none transition-transform active:scale-95 duration-200"
-            aria-label="Go to home slide"
           >
             <img 
               src={getDriveUrl(LOGO_ID)} 
               alt="Constantini Logo" 
-              className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform hover:scale-105 duration-300 drop-shadow-xl"
+              className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform hover:scale-105"
             />
           </button>
           <a 
@@ -141,65 +138,65 @@ const App: React.FC = () => {
             rel="noopener noreferrer" 
             className="text-white/90 hover:text-white transition-all text-sm md:text-base font-medium flex items-center gap-2 group"
           >
-            <Globe size={18} className="text-white/70 group-hover:text-white group-hover:scale-110 transition-transform hidden sm:block" />
+            <Globe size={18} className="text-white/70 group-hover:text-white hidden sm:block" />
             <span className="tracking-wider">constantini.ge</span>
           </a>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-start pt-28 md:pt-36 lg:pt-0 lg:justify-center pb-48 px-6 md:px-12 overflow-y-auto scrollbar-hide">
-        <div className="max-w-7xl w-full mx-auto">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl' : 'lg:grid-cols-12'} gap-6 lg:gap-12 items-center mx-auto`}>
+      <div className="relative z-20 h-full flex flex-col items-center justify-center pb-24 px-6 md:px-12 overflow-y-auto scrollbar-hide">
+        <div className="max-w-7xl w-full mx-auto mt-12 md:mt-0">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-4xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-16 items-center`}>
             
             {/* Content Column */}
             <div 
               className={`transition-all duration-700 ease-out transform ${
-                currentSlide === 0 ? '' : 'lg:col-span-5'
+                currentSlide === 0 ? 'flex flex-col items-center lg:items-start' : 'lg:col-span-5'
               } ${
                 isTransitioning ? 'opacity-0 -translate-x-8' : 'opacity-100 translate-x-0'
               }`}
             >
-              <div className="inline-block px-3 py-1 mb-3 md:mb-6 rounded-full bg-[#354f60]/40 backdrop-blur-md border border-white/20 text-white/90 text-[10px] md:text-sm font-medium tracking-wide">
+              <div className="inline-block px-4 py-1.5 mb-4 md:mb-8 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[11px] md:text-sm font-medium tracking-widest uppercase">
                 {slide.subtitle}
               </div>
               
-              <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-8 leading-tight">
+              <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-10 leading-[1.15]">
                 {slide.title}
               </h2>
               
-              <p className="text-sm md:text-lg lg:text-xl text-white/80 leading-relaxed font-light mb-4 md:mb-10 max-w-xl border-l-4 border-[#354f60] pl-4 md:pl-6">
+              <p className="text-base md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light mb-6 md:mb-12 max-w-2xl border-l-4 border-[#354f60] pl-6">
                 {slide.description}
               </p>
 
-              <div className="grid grid-cols-2 gap-3 md:gap-6 max-w-md mb-6 lg:mb-0">
-                 <div className="flex items-center gap-2 md:gap-3 text-white/60 hover:text-white transition-colors">
-                    <Award size={16} className="text-[#354f60]" />
-                    <span className="text-[10px] md:text-sm font-medium tracking-wider">15+ წელი</span>
+              <div className={`grid grid-cols-2 gap-4 md:gap-8 max-w-lg ${currentSlide === 0 ? 'justify-items-center lg:justify-items-start' : ''}`}>
+                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                    <Award size={20} className="text-[#354f60]" />
+                    <span className="text-xs md:text-base font-medium">15+ წელი</span>
                  </div>
-                 <div className="flex items-center gap-2 md:gap-3 text-white/60 hover:text-white transition-colors">
-                    <LayoutGrid size={16} className="text-[#354f60]" />
-                    <span className="text-[10px] md:text-sm font-medium tracking-wider">საწარმო</span>
+                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                    <LayoutGrid size={20} className="text-[#354f60]" />
+                    <span className="text-xs md:text-base font-medium">საწარმო</span>
                  </div>
-                 <div className="flex items-center gap-2 md:gap-3 text-white/60 hover:text-white transition-colors">
-                    <PenTool size={16} className="text-[#354f60]" />
-                    <span className="text-[10px] md:text-sm font-medium tracking-wider">ინდივიდუალური</span>
+                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                    <PenTool size={20} className="text-[#354f60]" />
+                    <span className="text-xs md:text-base font-medium">ინდივიდუალური</span>
                  </div>
-                 <div className="flex items-center gap-2 md:gap-3 text-white/60 hover:text-white transition-colors">
-                    <MessageSquare size={16} className="text-[#354f60]" />
-                    <span className="text-[10px] md:text-sm font-medium tracking-wider">კონსულტაცია</span>
+                 <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                    <MessageSquare size={20} className="text-[#354f60]" />
+                    <span className="text-xs md:text-base font-medium">კონსულტაცია</span>
                  </div>
               </div>
             </div>
 
-            {/* Right Side Content - More compact gallery to show all items */}
+            {/* Gallery Column (Slide 2) */}
             {currentSlide !== 0 && (
               <div 
-                className={`lg:col-span-7 flex flex-col gap-4 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-6 transition-all duration-1000 delay-200 transform ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
                 }`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3 max-h-[40vh] lg:max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/20">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 max-h-[45vh] lg:max-h-[65vh] overflow-y-auto pr-3 scrollbar-hide">
                   {slide.imageUrls.map((img, idx) => (
                     <button
                       key={idx}
@@ -207,8 +204,8 @@ const App: React.FC = () => {
                         setActiveSubImage(idx);
                         setEnlargedImageIndex(idx);
                       }}
-                      className={`relative aspect-video lg:aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all duration-300 transform hover:scale-105 shadow-2xl ${
-                        activeSubImage === idx ? 'border-white ring-2 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
+                      className={`relative aspect-[4/3] rounded-2xl overflow-hidden border-2 transition-all duration-300 transform hover:scale-[1.03] shadow-2xl ${
+                        activeSubImage === idx ? 'border-white ring-4 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
                       }`}
                     >
                       <img 
@@ -218,12 +215,12 @@ const App: React.FC = () => {
                         alt={`Project view ${idx + 1}`} 
                       />
                       <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <Sparkles className="text-white opacity-0 hover:opacity-100 drop-shadow-lg scale-75 md:scale-100 transition-opacity" size={20} />
+                        <Sparkles className="text-white opacity-0 hover:opacity-100 scale-110" size={24} />
                       </div>
                     </button>
                   ))}
                 </div>
-                <p className="text-white/40 text-[9px] md:text-[11px] italic text-center lg:text-left">
+                <p className="text-white/50 text-xs md:text-sm italic text-center lg:text-left tracking-wide">
                   დააკლიკეთ ფოტოს გასადიდებლად
                 </p>
               </div>
@@ -232,52 +229,30 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Image Popup / Lightbox */}
+      {/* Lightbox */}
       {enlargedImageIndex !== null && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8 animate-in fade-in zoom-in duration-300"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 animate-in fade-in zoom-in duration-300"
           onClick={() => setEnlargedImageIndex(null)}
         >
-          <button 
-            className="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors z-[110]"
-            onClick={() => setEnlargedImageIndex(null)}
-          >
-            <X size={32} />
+          <button className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors z-[110]" onClick={() => setEnlargedImageIndex(null)}>
+            <X size={40} />
           </button>
           
-          <button 
-            className="absolute left-4 md:left-8 text-white/30 hover:text-white transition-colors z-[110]"
-            onClick={prevEnlarged}
-          >
-            <ChevronLeft size={48} className="md:w-16 md:h-16" />
+          <button className="absolute left-6 text-white/40 hover:text-white transition-colors z-[110]" onClick={prevEnlarged}>
+            <ChevronLeft size={64} />
           </button>
           
-          <div 
-            className="relative max-w-5xl w-full h-full flex items-center justify-center pointer-events-none"
-          >
-            <img 
-              src={slide.imageUrls[enlargedImageIndex]} 
-              className="max-w-full max-h-full object-contain shadow-2xl rounded-sm pointer-events-auto"
-              alt="Enlarged project"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
+          <img 
+            src={slide.imageUrls[enlargedImageIndex]} 
+            className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
+            alt="Enlarged"
+            onClick={(e) => e.stopPropagation()}
+          />
 
-          <button 
-            className="absolute right-4 md:right-8 text-white/30 hover:text-white transition-colors z-[110]"
-            onClick={nextEnlarged}
-          >
-            <ChevronRight size={48} className="md:w-16 md:h-16" />
+          <button className="absolute right-6 text-white/40 hover:text-white transition-colors z-[110]" onClick={nextEnlarged}>
+            <ChevronRight size={64} />
           </button>
-
-          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-2">
-            {slide.imageUrls.map((_, i) => (
-              <div 
-                key={i} 
-                className={`w-2 h-2 rounded-full transition-all ${i === enlargedImageIndex ? 'bg-white scale-125' : 'bg-white/20'}`}
-              />
-            ))}
-          </div>
         </div>
       )}
 
@@ -291,8 +266,8 @@ const App: React.FC = () => {
       
       <Footer />
 
-      {/* Aesthetic Overlay Gradient */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-black/40 z-10" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -12,6 +11,8 @@
             font-family: 'Noto Sans Georgian', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
+            margin: 0;
+            padding: 0;
         }
         .bg-constantini {
             background-color: #354f60;
@@ -21,6 +22,14 @@
         }
         .border-constantini {
             border-color: #354f60;
+        }
+        /* Custom scrollbar for the gallery */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 <script type="importmap">
