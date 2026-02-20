@@ -208,27 +208,28 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-20 h-full w-full flex flex-col pt-20 pb-32 md:pt-32 md:pb-40 overflow-hidden">
-        <div className="max-w-7xl w-full mx-auto px-5 md:px-12 h-full flex items-center">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-16 items-center w-full`}>
+      <main className={`relative z-20 h-full w-full flex flex-col ${currentSlide === 0 ? 'overflow-hidden' : 'overflow-y-auto lg:overflow-hidden'} scrollbar-hide`}>
+        <div className="h-14 md:h-20 w-full shrink-0" />
+        <div className="max-w-7xl w-full mx-auto px-5 md:px-12 flex-1 flex flex-col pt-4 md:pt-10 pb-32 md:pb-40 min-h-0">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-4 lg:gap-16 items-start lg:items-center w-full h-full`}>
             
             {/* Content Column */}
             <div 
               className={`transition-all duration-700 ease-out transform ${
-                currentSlide === 0 ? 'flex flex-col items-center lg:items-start' : 'lg:col-span-5'
+                currentSlide === 0 ? 'flex flex-col items-center lg:items-start' : 'lg:col-span-5 mb-4 lg:mb-0'
               } ${
                 isTransitioning ? 'opacity-0 -translate-x-8' : 'opacity-100 translate-x-0'
               }`}
             >
-              <div className="inline-block px-3 py-1 mb-4 md:mb-6 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[9px] md:text-xs font-medium tracking-widest uppercase">
+              <div className="inline-block px-3 py-1 mb-3 md:mb-6 rounded-full bg-[#354f60]/60 backdrop-blur-md border border-white/20 text-white text-[9px] md:text-xs font-medium tracking-widest uppercase">
                 {slide.subtitle}
               </div>
               
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8 md:mb-14 leading-tight">
+              <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-14 leading-tight">
                 {slide.title}
               </h2>
               
-              <p className="text-[13px] md:text-lg lg:text-xl text-white/80 leading-relaxed font-light mb-8 md:mb-10 max-w-2xl border-l-2 md:border-l-4 border-[#354f60] pl-5 text-left">
+              <p className="text-[12px] md:text-lg lg:text-xl text-white/80 leading-relaxed font-light mb-6 md:mb-10 max-w-2xl border-l-2 md:border-l-4 border-[#354f60] pl-4 md:pl-5 text-left">
                 {slide.description}
               </p>
 
@@ -255,12 +256,12 @@ const App: React.FC = () => {
             {/* Gallery Column (Slide 2) */}
             {currentSlide !== 0 && (
               <div 
-                className={`lg:col-span-7 flex flex-col gap-6 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-4 transition-all duration-1000 delay-200 transform min-h-0 ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
-                } mt-12 lg:mt-0`}
+                }`}
               >
                 <div 
-                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 overflow-y-auto max-h-[45vh] lg:max-h-[55vh] pr-4 pb-20 custom-scrollbar"
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:overflow-y-auto lg:max-h-[55vh] pr-0 lg:pr-4 pb-10 lg:pb-20 custom-scrollbar"
                 >
                   {slide.imageUrls.map((img, idx) => (
                     <button
