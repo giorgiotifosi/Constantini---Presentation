@@ -6,10 +6,15 @@ export const Footer: React.FC = () => {
     <footer className="fixed bottom-0 left-0 right-0 bg-[#354f60] text-white py-2 md:py-5 px-4 md:px-8 z-30 border-t border-white/10 shadow-2xl">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
         <div className="flex flex-col gap-1 w-full md:w-auto text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-1 md:gap-3">
+          <a 
+            href="https://maps.app.goo.gl/B6CADGj4y3oxCufm9" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center md:justify-start gap-1 md:gap-3 hover:text-white/80 transition-colors"
+          >
              <MapPin size={12} className="text-white/70 flex-shrink-0 md:w-4 md:h-4" />
              <span className="text-[8px] sm:text-[10px] md:text-xs lg:text-sm font-light">დავით აღმაშენებლის ხეივანი 68, თბილისი, 0108 - მაღაზია 119</span>
-          </div>
+          </a>
         </div>
 
         <div className="flex items-center justify-center gap-4 md:gap-6">
