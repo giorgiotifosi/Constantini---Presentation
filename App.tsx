@@ -93,7 +93,6 @@ const SLIDES: SlideData[] = [
       getDriveUrl('1RkO08VzptTwUdkX04YK-B4y5YPESqgE1'),
       getDriveUrl('1nXuYKuBr6liuVY4NSOdRe2yet-d-9WCT'),
       getDriveUrl('1ve17ISre4BLUV-TY61dpmbk9Gayxyxhh'),
-      getDriveUrl('1CjH20CouShLqW4EZbEESP2yLZf0i1k96'),
       getDriveUrl('1waMz54bky86QtvsTEZ5-QT0RvluGe6ky')
     ]
   }
@@ -209,9 +208,9 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-20 h-full w-full flex flex-col pt-14 pb-44 md:pt-24 md:pb-56 overflow-y-auto scrollbar-hide">
-        <div className="max-w-7xl w-full mx-auto px-5 md:px-12 my-auto">
-          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-12 items-center`}>
+      <main className="relative z-20 h-full w-full flex flex-col pt-20 pb-32 md:pt-32 md:pb-40 overflow-hidden">
+        <div className="max-w-7xl w-full mx-auto px-5 md:px-12 h-full flex items-center">
+          <div className={`grid grid-cols-1 ${currentSlide === 0 ? 'lg:grid-cols-1 max-w-3xl mx-auto text-center lg:text-left' : 'lg:grid-cols-12'} gap-8 lg:gap-16 items-center w-full`}>
             
             {/* Content Column */}
             <div 
@@ -256,11 +255,13 @@ const App: React.FC = () => {
             {/* Gallery Column (Slide 2) */}
             {currentSlide !== 0 && (
               <div 
-                className={`lg:col-span-7 flex flex-col gap-3 transition-all duration-1000 delay-200 transform ${
+                className={`lg:col-span-7 flex flex-col gap-6 transition-all duration-1000 delay-200 transform ${
                   isTransitioning ? 'opacity-0 translate-y-8 scale-95' : 'opacity-100 translate-y-0 scale-100'
-                }`}
+                } mt-12 lg:mt-0`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
+                <div 
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 overflow-y-auto max-h-[45vh] lg:max-h-[55vh] pr-4 pb-20 custom-scrollbar"
+                >
                   {slide.imageUrls.map((img, idx) => (
                     <button
                       key={idx}
@@ -268,18 +269,20 @@ const App: React.FC = () => {
                         setActiveSubImage(idx);
                         setEnlargedImageIndex(idx);
                       }}
-                      className={`relative aspect-[4/3] rounded-xl overflow-hidden border-2 transition-all duration-300 transform hover:scale-[1.05] shadow-2xl ${
-                        activeSubImage === idx ? 'border-white ring-4 ring-[#354f60]/50' : 'border-white/10 hover:border-white/30'
+                      className={`relative aspect-square rounded-xl overflow-hidden border transition-all duration-500 transform hover:scale-[1.03] shadow-lg bg-white/5 group ${
+                        activeSubImage === idx ? 'border-white ring-2 ring-white/20' : 'border-white/10 hover:border-white/40'
                       }`}
                     >
                       <img 
                         src={img} 
                         loading="lazy"
-                        className="w-full h-full object-cover" 
+                        className="w-full h-full object-contain p-1 transition-transform duration-700 group-hover:scale-105" 
                         alt={`Project view ${idx + 1}`} 
                       />
-                      <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center">
-                        <Sparkles className="text-white opacity-0 hover:opacity-100 transition-opacity" size={20} />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <div className="bg-white/10 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                          <Sparkles className="text-white" size={16} />
+                        </div>
                       </div>
                     </button>
                   ))}
@@ -316,14 +319,14 @@ const App: React.FC = () => {
             <ChevronLeft size={48} />
           </button>
           
-          <div className="relative max-w-full max-h-[80vh] flex flex-col items-center">
+          <div className="relative w-full h-full flex items-center justify-center">
              <img 
                 src={slide.imageUrls[enlargedImageIndex]} 
-                className="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-lg"
+                className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
                 alt="Project detail"
                 onClick={(e) => e.stopPropagation()}
               />
-              <div className="absolute -bottom-10 text-white/60 text-sm font-light">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm font-light bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
                 {enlargedImageIndex + 1} / {slide.imageUrls.length}
               </div>
           </div>
