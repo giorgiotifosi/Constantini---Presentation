@@ -288,9 +288,6 @@ const App: React.FC = () => {
                     </button>
                   ))}
                 </div>
-                <p className="text-white/40 text-[10px] md:text-xs italic text-center lg:text-left tracking-widest mt-2 uppercase">
-                  დააკლიკეთ ფოტოს გასადიდებლად
-                </p>
               </div>
             )}
           </div>
