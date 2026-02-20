@@ -261,31 +261,32 @@ const App: React.FC = () => {
                 }`}
               >
                 <div 
-                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:overflow-y-auto lg:max-h-[55vh] pr-0 lg:pr-4 pb-10 lg:pb-20 custom-scrollbar"
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:overflow-y-auto lg:max-h-[55vh] pr-0 lg:pr-4 pb-10 lg:pb-20 custom-scrollbar items-start"
                 >
                   {slide.imageUrls.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        setActiveSubImage(idx);
-                        setEnlargedImageIndex(idx);
-                      }}
-                      className={`relative aspect-square rounded-xl overflow-hidden border transition-all duration-500 transform hover:scale-[1.03] shadow-lg bg-white/5 group ${
-                        activeSubImage === idx ? 'border-white ring-2 ring-white/20' : 'border-white/10 hover:border-white/40'
-                      }`}
-                    >
-                      <img 
-                        src={img} 
-                        loading="lazy"
-                        className="w-full h-full object-contain p-1 transition-transform duration-700 group-hover:scale-105" 
-                        alt={`Project view ${idx + 1}`} 
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <div className="bg-white/10 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                          <Sparkles className="text-white" size={16} />
+                    <div key={idx} className="w-full">
+                      <button
+                        onClick={() => {
+                          setActiveSubImage(idx);
+                          setEnlargedImageIndex(idx);
+                        }}
+                        className={`relative w-full aspect-square rounded-xl overflow-hidden border transition-all duration-500 transform hover:scale-[1.03] shadow-lg bg-white/5 group flex items-center justify-center ${
+                          activeSubImage === idx ? 'border-white ring-2 ring-white/20' : 'border-white/10 hover:border-white/40'
+                        }`}
+                      >
+                        <img 
+                          src={img} 
+                          loading="lazy"
+                          className="w-full h-full object-contain p-1 transition-transform duration-700 group-hover:scale-105" 
+                          alt={`Project view ${idx + 1}`} 
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                          <div className="bg-white/10 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                            <Sparkles className="text-white" size={16} />
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
+                    </div>
                   ))}
                 </div>
               </div>
